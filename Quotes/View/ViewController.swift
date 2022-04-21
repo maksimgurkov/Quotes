@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var personeImage: UIImageView!
@@ -18,32 +19,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        json()
+        
+        networkManager()
     }
     
     @IBAction func newQuotesButton() {
-        json()
+        networkManager()
     }
     
-    private func json() {
-        guard let urlString = URL(string: Source.source.rawValue) else { return }
-        URLSession.shared.dataTask(with: urlString) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error")
-                return
+    private func networkManager() {
+        NetworkManager.shared.fetchDataWithAlamofire(for: Link.source.rawValue) { result in
+            switch result {
+            case .success(let quotes):
+                self.results = quotes
+                self.configure()
+            case .failure(let error):
+                print(error)
             }
-            
-            do {
-                self.results = try JSONDecoder().decode([Quotes].self, from: data)
-                DispatchQueue.main.async {
-                    self.configure()
-                }
-
-            } catch let error {
-                print(error.localizedDescription)
-            }
-                
-        }.resume()
+        }
     }
     
     private func configure() {
@@ -54,16 +47,11 @@ class ViewController: UIViewController {
         }
     }
     
-    private func fetchImage(from imageUrl: String) {
-        DispatchQueue.global().async {
-            guard let url = URL(string: imageUrl) else { return }
-            guard let image = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.personeImage.image = UIImage(data: image)
-            }
+    private func fetchImage(from imageString: String) {
+        guard let imageResult = ImageManager.shered.fetchImage(from: imageString) else { return }
+        DispatchQueue.main.async {
+            self.personeImage.image = UIImage(data: imageResult)
         }
     }
-    
-
 }
 

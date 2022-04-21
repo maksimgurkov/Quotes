@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTW-cr-cMA">
-                                <rect key="frame" x="110" y="567" width="155" height="31"/>
+                                <rect key="frame" x="90" y="567" width="195" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="New Quotes"/>
                                 <connections>
@@ -47,14 +47,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RTW-cr-cMA" secondAttribute="trailing" constant="110" id="7v3-3m-x2F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RTW-cr-cMA" secondAttribute="trailing" constant="90" id="7v3-3m-x2F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NcW-92-h8T" secondAttribute="trailing" constant="20" id="8Eo-GB-QGk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RTW-cr-cMA" secondAttribute="bottom" constant="69" id="Qhw-PG-QN1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8IB-XI-yWY" secondAttribute="trailing" constant="20" id="Vu6-FP-TMX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y7c-8P-XoZ" secondAttribute="trailing" constant="68" id="Zyh-e0-t7W"/>
                             <constraint firstItem="NcW-92-h8T" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="aCd-uW-N7o"/>
                             <constraint firstItem="y7c-8P-XoZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="cUA-Yb-m4F"/>
-                            <constraint firstItem="RTW-cr-cMA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="fky-8m-6U7"/>
+                            <constraint firstItem="RTW-cr-cMA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="fky-8m-6U7"/>
                             <constraint firstItem="NcW-92-h8T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="g2j-xk-Xa9"/>
                             <constraint firstItem="8IB-XI-yWY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iLy-Zm-brx"/>
                             <constraint firstItem="8IB-XI-yWY" firstAttribute="top" secondItem="y7c-8P-XoZ" secondAttribute="bottom" constant="60" id="zLa-6M-CUK"/>
