@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var personeImage: UIImageView!
@@ -17,9 +16,10 @@ class ViewController: UIViewController {
     
     private var results: [Quotes] = []
     
+    @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activitiIndicator.startAnimating()
         networkManager()
     }
     
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     }
     
     private func networkManager() {
+        activitiIndicator.startAnimating()
         NetworkManager.shared.fetchDataWithAlamofire(for: Link.source.rawValue) { result in
             switch result {
             case .success(let quotes):
@@ -44,13 +45,14 @@ class ViewController: UIViewController {
             quotesLabel.text = value.quote ?? "No"
             namePersone.text = value.character ?? "No"
             fetchImage(from: value.image ?? "Nil")
+            activitiIndicator.stopAnimating()
         }
     }
     
     private func fetchImage(from imageString: String) {
-        guard let imageResult = ImageManager.shered.fetchImage(from: imageString) else { return }
-        DispatchQueue.main.async {
-            self.personeImage.image = UIImage(data: imageResult)
+        ImageManager.shered.fetchImage(from: imageString) { imageData in
+            self.personeImage.image = UIImage(data: imageData)
+            
         }
     }
 }

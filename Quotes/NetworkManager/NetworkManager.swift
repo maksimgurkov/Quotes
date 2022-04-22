@@ -27,16 +27,13 @@ class NetworkManager {
                 switch dataResponse.result {
                 case .success(let value):
                     let quotes = Quotes.getQuotes(from: value)
-                    DispatchQueue.main.async {
                         completion(.success(quotes))
-                    }
                 case .failure:
                     completion(.failure(.decodingError))
                 }
             }
+        }
     }
-    
-}
 
 class ImageManager {
     
@@ -44,8 +41,16 @@ class ImageManager {
     
     private init() {}
     
-    func fetchImage(from url: String?) -> Data? {
-        guard let imageUrl = URL(string: url ?? "") else { return nil }
-        return try? Data(contentsOf: imageUrl)
+    func fetchImage(from url: String, completion: @escaping (Data) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseData { data in
+                switch data.result {
+                case .success(let data):
+                    completion(data)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
-}
